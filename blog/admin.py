@@ -1,4 +1,5 @@
-# coding = utf-8
+# -*- coding: utf-8 -*-
+# 需要这样写coding格式
 from django.contrib import admin
 from django.contrib.auth.models import User
 
@@ -18,3 +19,4 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(news)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+# 需要取消注册之后才能重新注册User,不然会报错
