@@ -23,3 +23,6 @@ class news(models.Model):
 
     def __str__(self):
         return models.Model.__str__(self)
+
+    class Meta:
+        db_table = 'news'

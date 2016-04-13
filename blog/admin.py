@@ -1,3 +1,4 @@
+# coding = utf-8
 from django.contrib import admin
 from django.contrib.auth.models import User
 
@@ -15,4 +16,5 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(news)
-admin.site.register(User)
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
