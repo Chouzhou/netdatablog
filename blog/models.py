@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -8,11 +9,15 @@ from django.db import models
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     desc = models.TextField(blank=True, null=True)
+    QQ = models.CharField(max_length=50, verbose_name=u'QQ号码')
+    phone = models.CharField(max_length=50, verbose_name=u'电话号码')
 '''
 
 
 class User(AbstractUser):
     desc = models.TextField()
+    QQ = models.CharField(max_length=50, verbose_name=u'QQ号码')
+    phone = models.CharField(max_length=50, verbose_name=u'电话号码')
 
     # class Meta:
     #     model = User
