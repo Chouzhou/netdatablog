@@ -41,3 +41,9 @@ class News(models.Model):
 
     class Meta:
         db_table = 'news'
+        # 自己创建权限
+        permissions = (('can_view', 'Can see news'),
+                       ('can_add', 'Can add news'),
+                       ('can_edit', 'Can edit news'),
+                       ('can_delete', 'Can delete news'),
+                       )
