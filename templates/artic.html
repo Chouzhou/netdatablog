@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
+<ul>
+    {% for new in object_list %}
 
+
+
+        <li>{{ new.news_title }}</li>
+
+    {% endfor %}
+</ul>
 </body>
 </html>

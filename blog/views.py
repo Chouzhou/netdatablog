@@ -22,8 +22,12 @@ class LoginForm(forms.Form):
 
 
 class ArticListView(ListView):
-    model = News
-    template_name = 'artic.html'
+    model = News  # 要显示详情内容的类
+    template_name = 'artic.html'  # 模板名称，默认为 应用名/类名_detail.html（即 app/modelname_detail.html）
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ArticListView, self).get_context_data(**kwargs)
+    #     return context
 
 
 class ArticDetailView(DetailView):
@@ -71,3 +75,27 @@ def register(request):
     user.save()
     user.user_permissions = [Permission.objects.get(name='Can see news'), Permission.objects.get(name='Can edit news')]
     return HttpResponseRedirect("/blog/login/")
+
+
+# 添加新闻
+def add_new(request):
+    new = News(news_thread='天津',
+               news_title='天津塘沽爆炸',
+               news_url='http://new.sina.com/20150802/4321',
+               news_time='2015-08-02 19:30',
+               news_body='塘沽爆炸导致腾讯机房故障'
+               )
+    # 第一种方法创建
+    # new.news_from = 'aa'
+    new.save()
+    return HttpResponse('success')
+    # 查找新闻并修改
+
+
+def modify_new(request):
+    new = News.objects.get(news_url='http://new.sina.com/20150802/4321')
+    if not new:
+        return HttpResponse('fail')
+    new.news_body = '今天没吃药'
+    new.save()
+    return HttpResponse('success')
