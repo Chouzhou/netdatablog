@@ -6,6 +6,10 @@
     <script src="login.js"></script>
 {% endblock %}
 {% block container %}
+    {% load upper %}
+    {% upper %}
+        WELCOME{{ custom_name }},111
+    {% endupper %}
     <form method="get" enctype="multipart/form-data">
         {{ lf.as_p }}
         <input type="submit" value="ok"/>

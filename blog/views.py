@@ -34,7 +34,7 @@ class ArticDetailView(DetailView):
 def login(request):
     if ('email' or 'pwd') not in request.GET:
         lf = LoginForm()
-        return render_to_response('login.html', {'lf': lf})
+        return render_to_response('login.html', {'lf': lf, 'custom_name': 'sliver'})
 
     lf = LoginForm(request.GET)
     email = lf.data['email']
