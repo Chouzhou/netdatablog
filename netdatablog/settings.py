@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'netdatablog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
+IS_DEVELOP = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

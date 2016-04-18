@@ -10,6 +10,8 @@
     {% upper %}
         WELCOME{{ custom_name }},111
     {% endupper %}
+    {% load assets %}
+    <link src="{{ '1.css' | assets }}"/>
     <form method="get" enctype="multipart/form-data">
         {{ lf.as_p }}
         <input type="submit" value="ok"/>
