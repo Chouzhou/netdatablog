@@ -19,7 +19,7 @@ from blog.views import ArticListView, login, register
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^register', register, name='register'),
+    url(r'^register/$', register, name='register'),
     url(r'^blog/login/$', login, name='login'),
     url(r'^$', ArticListView.as_view(), name='lsit'),
     url(r'^(?P<pk>\d+)/$', ArticListView.as_view(), name='detail'),

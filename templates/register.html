@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-<form method="get" enctype="multipart/form-data">
-    {{ lf.as_p }}
-    <input value="register" type="submit"/>
-</form>
-</body>
-</html>
+{% extends "base/base.html" %}
+{% block head_css %}
+    <link src="reg.css"/>
+{% endblock %}
+{% block head_js %}
+    <script src="reg.js"></script>
+{% endblock %}
+{% block container %}
+    <form method="get" enctype="multipart/form-data">
+        {{ lf.as_p }}
+        <input type="submit" value="注册"/>
+    </form>
+{% endblock %}
