@@ -47,3 +47,25 @@ class News(models.Model):
                        ('can_edit', 'Can edit news'),
                        ('can_delete', 'Can delete news'),
                        )
+
+
+class Review(models.Model):
+    user = models.ForeignKey(User)
+    new = models.ForeignKey(News)
+    # 内容
+    content = models.TextField()
+    # 创建时间
+    create_time = models.DateTimeField()
+    # 判断是否能删除
+    dele = models.BooleanField(default=0)
+
+    # 显示内容
+    def __str__(self):
+        return self.content
+
+    class Meta:
+        db_table = 'review'
+        permissions = (('can_view', 'Can see news'),
+                       ('can_add', 'Can add news'),
+                       ('can_edit', 'Can edit news'),
+                       ('can_delete', 'Can delete news'),)

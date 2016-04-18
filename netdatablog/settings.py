@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for netdatablog project.
 
@@ -73,7 +74,7 @@ WSGI_APPLICATION = 'netdatablog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-IS_DEVELOP = False
+IS_DEVELOP = False  # 过滤不同的页面所显示的不同信息
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
