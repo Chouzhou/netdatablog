@@ -113,8 +113,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-FILE_CHARSET = 'utf-8'
-DEFAULT_CHARSET = 'utf-8'
+# FILE_CHARSET = 'utf-8'
+# DEFAULT_CHARSET = 'utf-8'
 # 以防乱码页面
 
 # Static files (CSS, JavaScript, Images)

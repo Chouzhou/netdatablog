@@ -10,6 +10,7 @@ import uuid
 from blog.models import News, User, Review
 from django import forms
 from django.db.models import Q  # 可以进行或查询
+from django.db import connection, transaction
 
 
 # def index(request):
@@ -95,10 +96,17 @@ def add_new(request):
 
 
 def search_new(request):
-    news = News.objects.filter(Q(news_title='天津塘沽爆炸') | Q(news_body='塘沽'))
+    # news = News.objects.filter(Q(news_title='天津塘沽爆炸') | Q(news_body='塘沽'))
+    # 第一种用SQL语句查询
+    # news = News.objects.raw("select * from news where news_title='天津塘沽爆炸' or news_body='塘沽'")
+    #    第二种用SQL语句查询
+    sql = "select * from news where news_url='http://new.sina.com/20150802/4321' or news_time='2015-08-02 19:30'"
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    news = cursor.fetchall()
     response_str = ''
     for new in news:
-        response_str += '<br>new_body:' + new.news_body
+        response_str += '<br>new_body:' + len(str(new))
     return HttpResponse(response_str)
 
 
