@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 # from django.contrib.auth.models import User
+import datetime
 from django.shortcuts import render, render_to_response
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import Permission
 # Create your views here.
 from django.views.generic import ListView, DetailView
 import uuid
-from blog.models import News, User
+from blog.models import News, User, Review
 from django import forms
 
 
@@ -98,4 +99,27 @@ def modify_new(request):
         return HttpResponse('fail')
     new.news_body = '今天没吃药'
     new.save()
+    return HttpResponse('success')
+
+
+def review_detail(request):
+    review_id = 1
+    reviews = Review.objects.filter(user__username='jack')
+    response_str = ''
+    for review in reviews:
+        response_str += '<br>review_id:' + str(review.id)
+        response_str += '<br>username:' + review.user.username
+        response_str += '<br>news_title:' + review.new.news_title
+    return HttpResponse(response_str)
+
+
+def add_review(request):
+    user = User.objects.get(id=1)
+    new = News.objects.get(id=1)
+    review = Review(user=user,
+                    new=new,
+                    # 创建时间
+                    create_time=datetime.datetime.now(),
+                    )
+    review.save()
     return HttpResponse('success')
