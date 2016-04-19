@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import ArticListView, login, register, add_new, modify_new, ArticDetailView, review_detail, add_review
+from blog.views import ArticListView, login, register, add_new, modify_new, ArticDetailView, review_detail, add_review, \
+    search_new
 
 urlpatterns = [
     url(r'^register/$', register, name='register'),
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'^modify_new/$', modify_new, name='modify_new'),
     url(r'^review_detail/$', review_detail, name='review_detail'),
     url(r'^add_review/$', add_review, name='add_review'),
+    url(r'^search_new/$', search_new, name='search_new'),
     url(r'^list/$', ArticListView.as_view(), name='list'),
     url(r'^(?P<pk>\d+)/$', ArticDetailView.as_view(), name='detail'),
 ]

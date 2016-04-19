@@ -9,6 +9,7 @@ from django.views.generic import ListView, DetailView
 import uuid
 from blog.models import News, User, Review
 from django import forms
+from django.db.models import Q  # 可以进行或查询
 
 
 # def index(request):
@@ -91,6 +92,14 @@ def add_new(request):
     new.save()
     return HttpResponse('success')
     # 查找新闻并修改
+
+
+def search_new(request):
+    news = News.objects.filter(Q(news_title='天津塘沽爆炸') | Q(news_body='塘沽'))
+    response_str = ''
+    for new in news:
+        response_str += '<br>new_body:' + new.news_body
+    return HttpResponse(response_str)
 
 
 def modify_new(request):
